@@ -5,6 +5,7 @@
     "prettier",
     "eslint:recommended",
     "airbnb",
+    "airbnb-typescript",
     "plugin:react/recommended",
     "plugin:jsx-a11y/recommended",
     "plugin:import/errors",
@@ -39,80 +40,6 @@
         "jsx": "never",
         "ts": "never",
         "tsx": "never"
-      }
-    ],
-    "import/order": [
-      "error",
-      {
-        "groups": [
-          "builtin",
-          "external",
-          "internal",
-          ["parent", "sibling"],
-          "index",
-          "unknown"
-        ],
-        "pathGroups": [
-          {
-            "pattern": "react*",
-            "group": "builtin",
-            "position": "after"
-          },
-          {
-            "pattern": "react*/**",
-            "group": "builtin",
-            "position": "after"
-          },
-          {
-            "pattern": "@hooks/*",
-            "group": "internal",
-            "position": "after"
-          },
-          {
-            "pattern": "@utils/*",
-            "group": "internal",
-            "position": "after"
-          },
-          {
-            "pattern": "@constants/*",
-            "group": "internal",
-            "position": "after"
-          },
-          {
-            "pattern": "@pages/*",
-            "group": "internal",
-            "position": "after"
-          },
-          {
-            "pattern": "@components/*",
-            "group": "internal",
-            "position": "after"
-          },
-          {
-            "pattern": "@assets/*",
-            "group": "internal",
-            "position": "after"
-          },
-          {
-            "pattern": "@styles/*",
-            "group": "internal",
-            "position": "after"
-          },
-          {
-            "pattern": "@routes/*",
-            "group": "internal",
-            "position": "after"
-          },
-          {
-            "pattern": "@types/*",
-            "group": "internal",
-            "position": "after"
-          }
-        ],
-        "pathGroupsExcludedImportTypes": ["react*", "react*/**"],
-        "alphabetize": {
-          "order": "asc"
-        }
       }
     ],
     "import/prefer-default-export": "off",
