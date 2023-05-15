@@ -1,44 +1,51 @@
-import { FaPlusCircle, FaSpinner } from "react-icons/fa";
-import { useCallback, useEffect, useState } from "react";
+import { FaPlusCircle, FaSpinner } from 'react-icons/fa';
+import { useCallback, useEffect, useState } from 'react';
 
-import { createTodo } from "../api/todo";
-import useFocus from "../hooks/useFocus";
+import { createTodo } from '../../api/todo';
+import useFocus from '../../hooks/useFocus';
+import useDebounce from '@/hooks/useDebounce';
 
-const InputTodo = ({ setTodos }) => {
-  const [inputText, setInputText] = useState("");
+type InputTodoProps = {
+  setTodos: React.Dispatch<React.SetStateAction<TodoItemType[]>>;
+};
+
+const InputTodo = ({ setTodos }: InputTodoProps) => {
+  const [inputText, setInputText] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const { ref, setFocus } = useFocus();
+  const debouncedInputText = useDebounce(inputText);
 
   useEffect(() => {
     setFocus();
   }, [setFocus]);
 
   const handleSubmit = useCallback(
-    async (e) => {
+    async (e: React.FormEvent<HTMLFormElement>) => {
       try {
         e.preventDefault();
         setIsLoading(true);
 
-        const trimmed = inputText.trim();
+        const trimmed = debouncedInputText.trim();
         if (!trimmed) {
-          return alert("Please write something");
+          return alert('Please write something');
         }
 
         const newItem = { title: trimmed };
         const { data } = await createTodo(newItem);
+        console.log('data', data);
 
         if (data) {
-          return setTodos((prev) => [...prev, data]);
+          return setTodos((prev: TodoItemType[]) => [...prev, data]);
         }
       } catch (error) {
         console.error(error);
-        alert("Something went wrong.");
+        alert('Something went wrong.');
       } finally {
-        setInputText("");
+        setInputText('');
         setIsLoading(false);
       }
     },
-    [inputText, setTodos],
+    [debouncedInputText, setTodos],
   );
 
   return (
