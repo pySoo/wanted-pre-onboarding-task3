@@ -1,0 +1,26 @@
+.spinnerContainer {
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .spinner {
+    width: 14.64px;
+    height: 14.64px;
+    border: 1.5px solid rgba(0, 0, 0, 0.05);
+    border-right: 1.5px solid #4b4b4b;
+    border-bottom: 1.5px solid #4b4b4b;
+    border-left: 1.5px solid #4b4b4b;
+    border-radius: 50%;
+    animation: spinner 2s linear infinite;
+
+    @keyframes spinner {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  }
+}
