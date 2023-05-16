@@ -1,11 +1,12 @@
 import TodoItem from '../TodoItem';
+import styles from './styles.module.scss';
 
 type TodoListProps = {
   todos: TodoItemType[];
   setTodos: React.Dispatch<React.SetStateAction<TodoItemType[]>>;
 };
 
-const TodoList = ({ todos, setTodos }: TodoListProps) => {
+export default function TodoList({ todos, setTodos }: TodoListProps) {
   return todos.length ? (
     <ul>
       {todos.map(({ id, title }) => (
@@ -13,7 +14,6 @@ const TodoList = ({ todos, setTodos }: TodoListProps) => {
       ))}
     </ul>
   ) : (
-    <div className="empty-list">...</div>
+    <div className={styles.emptyList}>...</div>
   );
-};
-export default TodoList;
+}

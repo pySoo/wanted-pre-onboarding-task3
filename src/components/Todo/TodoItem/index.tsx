@@ -1,7 +1,8 @@
 import { FaSpinner, FaTrash } from 'react-icons/fa';
 import { useCallback, useState } from 'react';
 
-import { deleteTodo } from '../../api/todo';
+import { deleteTodo } from '../../../api/todo';
+import styles from './styles.module.scss';
 
 type TodoItemProps = {
   id: string;
@@ -9,7 +10,7 @@ type TodoItemProps = {
   setTodos: React.Dispatch<React.SetStateAction<TodoItemType[]>>;
 };
 
-const TodoItem = ({ id, title, setTodos }: TodoItemProps) => {
+export default function TodoItem({ id, title, setTodos }: TodoItemProps) {
   const [isLoading, setIsLoading] = useState(false);
 
   const handleRemoveTodo = useCallback(async () => {
@@ -27,19 +28,17 @@ const TodoItem = ({ id, title, setTodos }: TodoItemProps) => {
   }, [id, setTodos]);
 
   return (
-    <li className="item">
+    <li className={styles.todoList}>
       <span>{title}</span>
-      <div className="item-option">
+      <div className={styles.todoListOption}>
         {!isLoading ? (
-          <button onClick={() => handleRemoveTodo()}>
-            <FaTrash className="btn-trash" />
+          <button type="button" onClick={() => handleRemoveTodo()}>
+            <FaTrash className={styles.btnTrash} />
           </button>
         ) : (
-          <FaSpinner className="spinner" />
+          <FaSpinner className={styles.spinner} />
         )}
       </div>
     </li>
   );
-};
-
-export default TodoItem;
+}

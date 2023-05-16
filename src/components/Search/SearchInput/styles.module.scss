@@ -1,0 +1,13 @@
+.searchInput {
+  width: 100%;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.02em;
+  font-weight: 400;
+
+  &::-webkit-input-placeholder,
+  ::placeholder {
+    color: #9f9f9f;
+    font-weight: 400;
+  }
+}

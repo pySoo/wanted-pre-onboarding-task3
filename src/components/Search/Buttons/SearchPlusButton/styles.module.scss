@@ -1,0 +1,15 @@
+.inputSubmit {
+  height: 20px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.5;
+  }
+
+  .plusButton {
+    color: darkcyan;
+    font-size: 20px;
+  }
+}

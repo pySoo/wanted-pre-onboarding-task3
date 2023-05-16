@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
+import Header from '../../components/common/Header';
+import InputTodo from '../../components/Todo/InputTodo';
+import TodoList from '../../components/Todo/TodoList';
+import { getTodoList } from '../../api/todo';
+import styles from './styles.module.scss';
 
-import Header from '../components/Header';
-import InputTodo from '../components/InputTodo';
-import TodoList from '../components/TodoList';
-import { getTodoList } from '../api/todo';
-
-const Main = () => {
+export default function Main() {
   const [todoListData, setTodoListData] = useState<TodoItemType[]>([]);
 
   useEffect(() => {
@@ -16,14 +16,12 @@ const Main = () => {
   }, []);
 
   return (
-    <div className="container">
-      <div className="inner">
+    <div className={styles.container}>
+      <div className={styles.inner}>
         <Header />
         <InputTodo setTodos={setTodoListData} />
         <TodoList todos={todoListData} setTodos={setTodoListData} />
       </div>
     </div>
   );
-};
-
-export default Main;
+}
