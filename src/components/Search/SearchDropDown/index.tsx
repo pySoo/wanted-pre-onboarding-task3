@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import useInfiniteScroll from '@/hooks/useInfiniteScroll';
-import { SearchItem } from '../SearchDropDownItem';
+import { SearchDropDownItem } from '../SearchDropDownItem';
 import SearchBottomButton from '../Buttons/SearchBottomButton';
 import styles from './styles.module.scss';
 
@@ -44,7 +44,7 @@ export function SearchDropDown({
   return (
     <ul ref={scrollRef} className={styles.dropDownList}>
       {searchResult.map((searchText, index) => (
-        <SearchItem
+        <SearchDropDownItem
           key={index}
           keyword={keyword}
           searchText={searchText}

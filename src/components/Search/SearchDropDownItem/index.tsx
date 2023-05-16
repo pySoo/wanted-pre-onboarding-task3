@@ -1,17 +1,17 @@
 import HightLightedText from '../HightLightedText';
 import styles from './styles.module.scss';
 
-type SearchItemProps = {
+type SearchDropDownItemProps = {
   keyword: string;
   searchText: string;
   onCreateTodo: (todoText: string) => void;
 };
 
-export function SearchItem({
+export function SearchDropDownItem({
   keyword,
   searchText,
   onCreateTodo,
-}: SearchItemProps) {
+}: SearchDropDownItemProps) {
   const handleClick = () => {
     onCreateTodo(searchText);
   };
