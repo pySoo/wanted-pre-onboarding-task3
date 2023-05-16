@@ -24,7 +24,6 @@ export default function InputTodo({ setTodos }: InputTodoProps) {
 
   const handleCreateTodo = async (todoText: string) => {
     try {
-      setIsInputFocused(true);
       setIsDataLoading(true);
       const trimmed = todoText.trim();
       if (!trimmed) {
